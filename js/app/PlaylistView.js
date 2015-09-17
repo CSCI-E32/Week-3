@@ -1,8 +1,15 @@
 define(['jquery', 'Playlist'], function($, Playlist){
 
-  var PlaylistView = function(){
+  var PlaylistView = function(config){
     // initialize
+
+    this.config = config || {};
+    this.$song = this.config.song || $('#song');
+    this.$addSongForm = this.config.addSongForm || $('#addSongForm');
+    this.$currentPlaylist = this.config.currentPlaylist || $('#currentPlaylist');
+
     this.playlist = new Playlist();
+
     this.listenAddSong();
 
     this.updatePlaylist();
@@ -10,10 +17,10 @@ define(['jquery', 'Playlist'], function($, Playlist){
   };
   PlaylistView.prototype.listenAddSong = function(){
     var that = this;
-    $('#addSongForm').on('submit', function(event){
-      that.playlist.addSong($('#song').val());
+    this.$addSongForm.on('submit', function(event){
+      that.playlist.addSong(that.$song.val());
       that.updatePlaylist();
-      $('#song').val('');
+      that.$song.val('');
       return false;
     });
   };
@@ -38,7 +45,7 @@ define(['jquery', 'Playlist'], function($, Playlist){
       return li;
     });
 
-    $('#currentPlaylist').html(playlistDom);
+    that.$currentPlaylist.html(playlistDom);
 
   };
 
