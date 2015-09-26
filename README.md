@@ -29,7 +29,7 @@
 4. [Call a fake function on the spy](http://jasmine.github.io/2.0/introduction.html#section-Spies:_<code>and.callFake</code>)
 5. Make the fake function take one parameter (the key to the store) and return the value for that key
 6. Repeat for sessionStorage's setItem
-7. Remember that sessionStorate (and localStorage) are objects where the values are all string representations of the data stored in them
+7. Remember that sessionStorage (and localStorage) are objects where the values are all string representations of the data stored in them
 
 ## Make some Specs for Playlist
 *this is for you to do*
